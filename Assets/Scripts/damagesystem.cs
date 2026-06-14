@@ -18,6 +18,8 @@ public class damagesystem : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (PlayerPrefs.GetInt("DamageEnabled", 1) == 0) return;
+
         float impact = collision.relativeVelocity.magnitude;
         if (impact < impactThreshold) return;
 

@@ -15,7 +15,8 @@ public class Speedometer : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
 
-        float speed = rb.linearVelocity.magnitude * 3.6f;
-        speedText.text = Mathf.RoundToInt(speed) + " km/h";
+        bool useMph = PlayerPrefs.GetInt("UseMph", 0) == 1;
+        float speed = rb.linearVelocity.magnitude * (useMph ? 2.236936f : 3.6f);
+        speedText.text = Mathf.RoundToInt(speed) + (useMph ? " mph" : " km/h");
     }
 }
